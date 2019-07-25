@@ -1,23 +1,23 @@
 @echo off
-set /p ip=ÇëÊäÈëÆðÊ¼IPµØÖ·£º
-set /p num=ÇëÊäÈëÒª²âÊÔµÄÁ¬ÐøIPµØÖ·¸öÊý£º
+set /p ip=è¯·è¾“å…¥èµ·å§‹IPåœ°å€ï¼š
+set /p num=è¯·è¾“å…¥è¦æµ‹è¯•çš„è¿žç»­IPåœ°å€ä¸ªæ•°ï¼š
 for /f "delims=. tokens=1,2,3" %%a in ("%ip%") do (set ip1=%%a.%%b.%%c)
 for /f "delims=. tokens=4" %%a in ("%ip%") do (set ip2=%%a)
-::ÑÓ³Ù±äÁ¿À©Õ¹
+::å»¶è¿Ÿå˜é‡æ‰©å±•
 setlocal enabledelayedexpansion
 echo ====================
 for /l %%i in (1,1,!num!) do (
-	ping -n 1 %ip1%.!ip2! |find "¶ªÊ§">result.txt
+	ping -n 1 %ip1%.!ip2! |find "ä¸¢å¤±">result.txt
 	set /p a=<result.txt
-	ping -n 1 %ip1%.!ip2! |find "ÎÞ·¨·ÃÎÊÄ¿±êÖ÷»ú">result.txt
+	ping -n 1 %ip1%.!ip2! |find "æ— æ³•è®¿é—®ç›®æ ‡ä¸»æœº">result.txt
 	set /p b=<result.txt
 ::	echo b=!b!
 	set b=!b:~22,8!
 ::	echo b=!b!
-	set b1="ÎÞ·¨·ÃÎÊÄ¿±êÖ÷»ú"
+	set b1="æ— æ³•è®¿é—®ç›®æ ‡ä¸»æœº"
 ::	echo b1=!b1!
 	set a=!a:~30,1!
-::	echo ¶ª°üÂÊ=!a!
+::	echo ä¸¢åŒ…çŽ‡=!a!
 	if !a! GEQ 1 (
 		echo %ip1%.!ip2! is DOWN
 		echo %ip1%.!ip2! is DOWN>>IP.txt
